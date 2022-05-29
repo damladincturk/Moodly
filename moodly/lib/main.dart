@@ -1,12 +1,18 @@
 import 'dart:ffi';
+import 'dart:html';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:moodly/pages/ayarlar.dart';
+import 'package:moodly/pages/gunlukler.dart';
+import 'package:moodly/pages/hedefler.dart';
 
 import 'package:moodly/pages/istatistik.dart';
 import 'package:moodly/pages/maindesign.dart';
 import 'package:moodly/pages/profil.dart';
+import 'package:moodly/pages/tavsiyeSayfasi.dart';
+import 'package:moodly/pages/yardim.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,7 +34,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State {
-  final List<Widget> screens = [MainDesign(), Deneme(), Profil()];
+  final List<Widget> screens = [
+    MainDesign(),
+    Profil(),
+    GunlukSayfasi(),
+    Hedefler(),
+    Istatistik(),
+    TavsiyeSayasi(),
+    Ayarlar(),
+    Yardim()
+  ];
   Widget currentScreen = MainDesign();
   final PageStorageBucket bucket = PageStorageBucket();
   int currentTab = 0;
@@ -104,7 +119,7 @@ class _HomeScreenState extends State {
                     onPressed: () {
                       setState(
                         () {
-                          currentScreen = Deneme();
+                          currentScreen = Istatistik();
                           currentTab = 1;
                         },
                       );
@@ -166,7 +181,7 @@ class _HomeScreenState extends State {
               onTap: () {
                 setState(() {
                   currentScreen = Profil();
-                  currentTab = 2;
+                  currentTab = 1;
                   Navigator.pop(context);
                 });
               }),
@@ -179,22 +194,46 @@ class _HomeScreenState extends State {
           ListTile(
             leading: Icon(Icons.draw),
             title: Text("Günlükler"),
-            onTap: () => null,
+            onTap: () {
+              setState(() {
+                currentScreen = GunlukSayfasi();
+                currentTab = 2;
+                Navigator.pop(context);
+              });
+            },
           ),
           ListTile(
             leading: Icon(Icons.done_all_sharp),
             title: Text("Hedefler"),
-            onTap: () => null,
+            onTap: () {
+              setState(() {
+                currentScreen = Hedefler();
+                currentTab = 3;
+                Navigator.pop(context);
+              });
+            },
           ),
           ListTile(
             leading: Icon(Icons.align_vertical_bottom),
             title: Text("İstatistikler"),
-            onTap: () => null,
+            onTap: () {
+              setState(() {
+                currentScreen = Istatistik();
+                currentTab = 4;
+                Navigator.pop(context);
+              });
+            },
           ),
           ListTile(
             leading: Icon(Icons.favorite),
             title: Text("Tavsiyeler"),
-            onTap: () => null,
+            onTap: () {
+              setState(() {
+                currentScreen = TavsiyeSayasi();
+                currentTab = 5;
+                Navigator.pop(context);
+              });
+            },
           ),
           Divider(
             color: Colors.black,
@@ -205,11 +244,34 @@ class _HomeScreenState extends State {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text("Ayarlar"),
-            onTap: () => null,
+            onTap: () {
+              setState(() {
+                currentScreen = Ayarlar();
+                currentTab = 6;
+                Navigator.pop(context);
+              });
+            },
           ),
           ListTile(
             leading: Icon(Icons.help),
             title: Text("Yardım"),
+            onTap: () {
+              setState(() {
+                currentScreen = Yardim();
+                currentTab = 7;
+                Navigator.pop(context);
+              });
+            },
+          ),
+          Divider(
+            color: Colors.black,
+            thickness: 1,
+            indent: 20,
+            endIndent: 20,
+          ),
+          ListTile(
+            leading: Icon(Icons.help),
+            title: Text("Çıkış"),
             onTap: () => null,
           ),
         ],
