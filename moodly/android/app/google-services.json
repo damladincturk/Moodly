@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "390333951291",
+    "project_id": "moodly-adb",
+    "storage_bucket": "moodly-adb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390333951291:android:c783e795181a9b83f15b1e",
+        "android_client_info": {
+          "package_name": "com.example.moodly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390333951291-6sho5g9v2gi9dth8cledk35qcapbcdaf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moodly",
+            "certificate_hash": "682e4aa71dacb2247849f4bf7b2100164d3c59e3"
+          }
+        },
+        {
+          "client_id": "390333951291-9lfnhc99g8nimbknto47mp1vmeebj5rj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6c4pHdl1oPuFSlwefvlY89-7a-EX44dE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390333951291-9lfnhc99g8nimbknto47mp1vmeebj5rj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
