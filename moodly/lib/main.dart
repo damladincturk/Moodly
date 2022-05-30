@@ -5,7 +5,6 @@ import 'package:moodly/pages/ayarlar.dart';
 import 'package:moodly/pages/gunlukekle.dart';
 import 'package:moodly/pages/gunlukler.dart';
 import 'package:moodly/pages/hedefler.dart';
-
 import 'package:moodly/pages/istatistik.dart';
 import 'package:moodly/pages/maindesign.dart';
 import 'package:moodly/pages/profil.dart';
