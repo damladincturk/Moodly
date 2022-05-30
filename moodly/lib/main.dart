@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:moodly/pages/ayarlar.dart';
+import 'package:moodly/pages/gunlukekle.dart';
 import 'package:moodly/pages/gunlukler.dart';
 import 'package:moodly/pages/hedefler.dart';
 
@@ -10,7 +12,11 @@ import 'package:moodly/pages/profil.dart';
 import 'package:moodly/pages/tavsiyeSayfasi.dart';
 import 'package:moodly/pages/yardim.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -38,9 +44,10 @@ class _HomeScreenState extends State {
     Istatistik(),
     TavsiyeSayasi(),
     Ayarlar(),
-    Yardim()
+    Yardim(),
+    GunlukEkle()
   ];
-  Widget currentScreen = MainDesign();
+  Widget currentScreen = GunlukEkle();
   final PageStorageBucket bucket = PageStorageBucket();
   int currentTab = 0;
 
@@ -61,7 +68,15 @@ class _HomeScreenState extends State {
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.add_event,
         children: [
-          SpeedDialChild(child: Icon(Icons.draw), label: "Günlük Ekle"),
+          SpeedDialChild(
+              child: Icon(Icons.draw),
+              label: "Günlük Ekle",
+              onTap: () {
+                setState(() {
+                  currentScreen = GunlukEkle();
+                  currentTab = 8;
+                });
+              }),
           SpeedDialChild(
               child: Icon(Icons.done_all_sharp), label: "Hedef Ekle"),
           SpeedDialChild(child: Icon(Icons.emoji_emotions), label: "Mod Ekle")
