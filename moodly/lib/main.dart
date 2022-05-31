@@ -46,7 +46,7 @@ class _HomeScreenState extends State {
     Yardim(),
     GunlukEkle()
   ];
-  Widget currentScreen = MainDesign();
+  Widget currentScreen = GunlukSayfasi();
   final PageStorageBucket bucket = PageStorageBucket();
   int currentTab = 0;
 

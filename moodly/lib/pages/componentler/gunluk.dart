@@ -49,7 +49,7 @@ class _Gunluk extends State {
   Widget build(BuildContext context) {
     return Container(
       width: 370,
-      height: 250,
+      height: 230,
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemCount: 6,
