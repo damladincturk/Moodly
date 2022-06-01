@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:moodly/pages/componentler/gunluk.dart';
@@ -37,7 +38,7 @@ class _GunlukSayfasi extends State {
     return Column(
       children: [
         Text(
-          "Günlüklerin",
+          "Teknoloji",
           style: GoogleFonts.macondo(fontSize: 20),
         ),
         Divider(
@@ -46,15 +47,6 @@ class _GunlukSayfasi extends State {
         ),
         SizedBox(height: 20),
         Gunluk(),
-        Container(
-          padding: EdgeInsets.only(left: 250),
-          child: ElevatedButton(
-              onPressed: () {
-                //currentScreen = GunlukEkle();
-                null;
-              },
-              child: Text("Günlük Ekle")),
-        ),
         SizedBox(
           height: 30,
         ),

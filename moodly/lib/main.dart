@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:moodly/pages/ayarlar.dart';
+import 'package:moodly/pages/componentler/gunluk.dart';
 import 'package:moodly/pages/gunlukekle.dart';
 import 'package:moodly/pages/gunlukler.dart';
 import 'package:moodly/pages/hedefler.dart';
@@ -35,6 +38,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State {
+  final _finalStore = FirebaseFirestore.instance;
+
   final List<Widget> screens = [
     MainDesign(),
     Profil(),
@@ -46,12 +51,14 @@ class _HomeScreenState extends State {
     Yardim(),
     GunlukEkle()
   ];
-  Widget currentScreen = GunlukSayfasi();
+  Widget currentScreen = Gunluk();
   final PageStorageBucket bucket = PageStorageBucket();
   int currentTab = 0;
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference collectionReference =
+        _finalStore.collection('generaldiaries');
     return Scaffold(
       extendBody: true,
       appBar: AppBar(

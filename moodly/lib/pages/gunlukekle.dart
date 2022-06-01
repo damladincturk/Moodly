@@ -156,9 +156,6 @@ class _GunlukEkle extends State {
   final _firestore = FirebaseFirestore.instance;
 
   void register() async {
-    print(_titleEditingController.text);
-    print(_contentEditingConroller.text);
-    print(_imgEditingContoller.text);
     CollectionReference diariesRef = _firestore.collection('users');
 
     var userDamla = _firestore
