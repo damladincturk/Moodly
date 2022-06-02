@@ -34,11 +34,9 @@ class _TavsiyeSayfasi extends State {
           Container(
               width: 20,
               height: 20,
-              margin: EdgeInsets.only(right: 25),
-              child: Icon(Icons.sms_failed)),
-          Container(
-            width: 250,
-            height: 100,
+              margin: EdgeInsets.only(right: 30),
+              child: Icon(Icons.add_task)),
+          Flexible(
             child: Column(
               children: [
                 SizedBox(
@@ -49,9 +47,12 @@ class _TavsiyeSayfasi extends State {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "Tavsiye Tarih,",
-                  textAlign: TextAlign.end,
+                Container(
+                  margin: EdgeInsets.only(left: 210),
+                  child: Text(
+                    "Tavsiye Tarih",
+                    textAlign: TextAlign.end,
+                  ),
                 )
               ],
             ),

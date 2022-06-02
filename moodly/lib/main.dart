@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:moodly/pages/ayarlar.dart';
-import 'package:moodly/pages/componentler/gunluk.dart';
 import 'package:moodly/pages/gunlukekle.dart';
 import 'package:moodly/pages/gunlukler.dart';
 import 'package:moodly/pages/hedefler.dart';
@@ -13,6 +11,9 @@ import 'package:moodly/pages/maindesign.dart';
 import 'package:moodly/pages/profil.dart';
 import 'package:moodly/pages/tavsiyeSayfasi.dart';
 import 'package:moodly/pages/yardim.dart';
+import 'package:moodly/pages/uyelik.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,11 +22,25 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      home: AnimatedSplashScreen(
+        splash: Column(
+          children: [
+            Image.asset("lib/assets/images/logo.png"),
+          ],
+        ),
+        backgroundColor: Colors.amber,
+        nextScreen: uyelikekrani(),
+        duration: 2500,
+        splashTransition: SplashTransition.slideTransition,
+        pageTransitionType: PageTransitionType.topToBottom,
+        animationDuration: const Duration(seconds: 2),
+        splashIconSize: 425,
+      ),
     );
   }
 }
