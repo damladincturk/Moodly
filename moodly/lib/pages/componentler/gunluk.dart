@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Gunluk extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
+    FirebaseFirestore.instance.collection('generaldiaries').snapshots();
     return _Gunluk();
   }
 }
@@ -44,52 +46,25 @@ class _Gunluk extends State {
         title: "Deneme",
         content: "İçerik içerik içerik deneme içerik"),
   ];
-  //final Stream<QuerySnapshot> generaldiaries =
-  //  FirebaseFirestore.instance.collection('generaldiaries').snapshots();
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference reef =
-        FirebaseFirestore.instance.collection('generaldiaries');
-    var ref2 = reef.doc('Teknoloji');
     return Container(
-      width: 370,
-      height: 230,
-      child: StreamBuilder<QuerySnapshot>(
-        stream: reef.snapshots(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasError) {
-            return Text("Hata var..");
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Text("Loding..");
-          }
-
-          List<DocumentSnapshot> list = snapshot.data.docs;
-
-          return Flexible(
-              child: ListView.builder(
-
-                  //scrollDirection: Axis.horizontal,
-                  itemCount: list.length,
-                  /*separatorBuilder: (context, index) => SizedBox(
-                      width: 35,
-                    ),*/
-
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: ListTile(
-                        title: Text(
-                          '${list[index].data()?.['title']}',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        subtitle: Text('${list[index].data()['content']}'),
-                      ),
-                    );
-                  }));
-        },
-      ),
-    );
+        width: 370,
+        height: 230,
+        child: Flexible(
+            child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(
+              width: 10,
+            );
+          },
+          itemBuilder: (BuildContext context, int index) {
+            return buildCard(item: items[index]);
+          },
+          itemCount: 6,
+        )));
   }
 
   buildCard({required CartItem item}) {
@@ -113,14 +88,5 @@ class _Gunluk extends State {
         ],
       ),
     );
-  }
-
-  _buildic() async {
-    final _firestore = FirebaseFirestore.instance;
-    CollectionReference ref = _firestore.collection('generaldiaries');
-    var response = await ref.get();
-    var datalist = response.docs;
-    print("list : ");
-    print(datalist);
   }
 }
